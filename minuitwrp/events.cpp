@@ -315,8 +315,9 @@ static void check_mouse(int fd, const char* deviceName)
 	if(!test_bit(REL_X, bit[EV_REL]) || !test_bit(REL_Y, bit[EV_REL]))
 		return;
 
+//ppx620 does not have a right mouse button
 	ioctl(fd, EVIOCGBIT(EV_KEY, KEY_MAX), bit[EV_KEY]);
-	if(!test_bit(BTN_LEFT, bit[EV_KEY]) || !test_bit(BTN_RIGHT, bit[EV_KEY]))
+	if(!test_bit(BTN_LEFT, bit[EV_KEY]))
 		return;
 
 	LOGI("Found mouse '%s'\n", deviceName);
